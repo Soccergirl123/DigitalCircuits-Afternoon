@@ -1,0 +1,32 @@
+#include <Servo.h> 
+
+Servo pervs;
+Servo tweetey;
+
+int pos;
+int pocket;
+
+void setup()
+{
+  pervs.attach(9);
+  tweetey.attach(10);
+  
+  Serial.begin(9600);
+  
+}
+
+
+ void loop()
+{
+   pocket = analogRead(A0);
+   Serial.println(pocket);
+   
+   pos = map(pocket,0,1023,0,180);
+   Serial.println(pos);
+   
+   pervs.write(pos);
+   tweetey.write(pos);
+   delay(500);
+   
+   
+}
